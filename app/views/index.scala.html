@@ -8,10 +8,9 @@
 @main("Workshop") {
 
     <h1>Exercise list</h1>
-    <dl>
+    <ul>
         @listOfExercises.zipWithIndex.map{ ex =>
-          <dt><a href="@routes.Application.exercise(ex._2)">@ex._1.title<a></dt>
-          <dd>@ex._1.description</dd>
+          <li><a href="@routes.Application.exercise(ex._2)">Exercise @ex._2 - @ex._1.title<a></li>
         }
-    </dl>
+    </ul>
 }
