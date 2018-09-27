@@ -1,5 +1,5 @@
 @import scala.util.{ Try, Success, Failure }
-@(index: Int, inputForm: Form[Option[String]], result: Option[Try[String]] = None)(implicit request: MessagesRequestHeader)
+@(index: Int, inputForm: Form[List[String]], result: Option[Try[String]] = None)(implicit request: MessagesRequestHeader)
 @import utils.BSVersion
 @import helper.Implicits._
 @import models.Exercise
@@ -8,14 +8,16 @@
 @actualResult = @{ result.getOrElse(Failure(new Exception("THIS SHOULD NOT HAPPEN!"))) }
 
 @main("Workshop - Exercise " + index) {
-	<h1>Exercise - @exercise.title</h1>
+	<h1>Exercise @index - @exercise.title</h1>
 	<p>
 		@exercise.description
 	</p>
 
 	@b4.vertical.formCSRF(routes.Application.testExercise(index)) { implicit vfc =>
-		@if(!exercise.customInput) {
-			@b4.text(inputForm("input"), '_label -> "Input", 'placeholder -> "Write your input here..." )
+		@{
+			0.until(exercise.nArgs).map( n =>
+				b4.text(inputForm(s"input[$n]"), '_label -> s"Input $n", 'placeholder -> "Write your input here...")
+			)
 		}
 		@b4.submit('class -> "btn btn-secondary"){ Test! }
 	}

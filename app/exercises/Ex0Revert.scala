@@ -1,6 +1,6 @@
 package exercises
 
-object Ex1Revert {
+object Ex0Revert {
 
   def revert(list: List[Int]): List[Int] = {
     ???

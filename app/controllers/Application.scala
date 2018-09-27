@@ -27,7 +27,7 @@ import models.Exercise
 
 class Application @Inject() (mcc: MessagesControllerComponents) extends MessagesAbstractController(mcc) {
 
-  val inputForm = Form(optional(single("input" -> text(maxLength = 500))))
+  val inputForm = Form(single("input" -> list(text(maxLength = 500))))
 
   def index = Action { implicit request => Ok(views.html.index()) }
 
@@ -48,9 +48,8 @@ class Application @Inject() (mcc: MessagesControllerComponents) extends Messages
           formWithErrors =>
             Ok(views.html.exercise(i, inputForm, Some(Failure(new Exception("There was an error with the input: " + formWithErrors)))))
         }, {
-          input: Option[String] =>
-            val actualInput = input.getOrElse("")
-            Ok(views.html.exercise(i, inputForm, Some(exercise.testInput(actualInput))))
+          input: List[String] =>
+            Ok(views.html.exercise(i, inputForm, Some(exercise.testInput(input))))
         })
       }
   }

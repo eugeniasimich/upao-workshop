@@ -1,6 +1,6 @@
 package exercises
 
-object Ex2Filter {
+object Ex1Filter {
 
   val customInput: List[String] = {
     List("Dog", "Cat", "Rabbit")
