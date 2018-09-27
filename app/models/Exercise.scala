@@ -11,7 +11,7 @@ object Exercise {
     val nArgs: Int,
     val testInput: List[String] => Try[String])
 
-  private def parseIntList(input: String) = input.split(",").toList.map(_.toInt)
+  private def parseIntList(input: String) = input.split(",").toList.filter(_.nonEmpty).map(_.toInt)
 
   case object ExerciseTemplate extends Exercise("Title",
     Html(
