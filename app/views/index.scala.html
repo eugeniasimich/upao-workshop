@@ -3,14 +3,17 @@
 @import helper.Implicits._
 @import models.Exercise
 
-@listOfExercises = @{ Exercise.listOfExercises }
+@listOfExercises = @{ Exercise.listOfExercises.zipWithIndex }
+@exercisesGrouped = @{listOfExercises.groupBy(_._1.topic).toList }
 
 @main("Workshop") {
 
-    <h1>Exercise list</h1>
+    <h1>Exercises</h1>
+
     <ul>
-        @listOfExercises.zipWithIndex.map{ ex =>
-          <li><a href="@routes.Application.exercise(ex._2)">Exercise @ex._2 - @ex._1.title<a></li>
+        @exercisesGrouped.map{ case (topic, exs) =>
+            <h3>@{topic.label}</h3>
+            @exs.map { ex => <li><a href="@routes.Application.exercise(ex._2)">Exercise @ex._2 - @ex._1.title<a></li>}
         }
     </ul>
 }
