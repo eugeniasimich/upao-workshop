@@ -14,6 +14,7 @@ object Exists {
       if (list(i) > x) {
         return true
       }
+      i = i + 1
     }
     return false
   }
