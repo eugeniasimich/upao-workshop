@@ -14,20 +14,21 @@ object Processor extends App {
     } yield action
 
   def onlyCTIBank(allActions: List[AccountAction]): List[AccountAction] = {
-    ???
+    allActions.filter(_.accountNumber.bankId == "CTI")
   }
 
   def onlyWithdrawals(allActions: List[AccountAction]): List[AccountAction] = {
-    ???
+    allActions.filter(_.actionType == Withdraw)
   }
 
   def actionsPerAccount(allActions: List[AccountAction]): Map[AccountNumber, Int] = {
     val actionMap: Map[AccountNumber, List[AccountAction]] = allActions.groupBy(_.accountNumber)
-    actionMap.mapValues(???)
+    actionMap.mapValues(_.length)
   }
 
   def accountSummary(allActions: List[AccountAction]): Map[AccountNumber, Map[ActionType, Double]] = {
-    ???
+    val actionMap: Map[AccountNumber, List[AccountAction]] = allActions.groupBy(_.accountNumber)
+    actionMap.mapValues(_.groupBy(_.actionType).mapValues(_.map(_.amount).sum))
   }
 
 }

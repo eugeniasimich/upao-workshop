@@ -12,8 +12,8 @@ case class AccountAction(
   // Shows an AccountAction(AccountNumber(CTI, 2323234), 100, Deposit) as
   // "A deposit of $100 has been made to account CTI2323234"
 
-  def prettyPrint(): String = {
-    ???
+  override def toString: String = {
+    s"A ${if (actionType == Deposit) "deposit" else "withdraw"} of $amount has been made to account ${accountNumber.bankId}${accountNumber.accountId}"
   }
 
 }
