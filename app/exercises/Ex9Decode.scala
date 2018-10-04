@@ -7,7 +7,7 @@ object Ex9Decode {
   def decode(list: List[(Int, Int)]): List[Int] = {
     for {
       (r, e) <- list
-      _      <- 1 to r
+      _ <- 1 to r
     } yield e
   }
 

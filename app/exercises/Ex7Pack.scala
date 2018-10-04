@@ -10,7 +10,7 @@ object Ex7Pack {
           case Nil => List(List(x))
           case y :: ys =>
             if (y.contains(x))
-              (x::y) :: ys
+              (x :: y) :: ys
             else
               List(x) :: y :: ys
         }

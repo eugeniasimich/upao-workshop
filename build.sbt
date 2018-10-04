@@ -8,8 +8,10 @@ routesGenerator := InjectedRoutesGenerator
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+resolvers ++= Seq(
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
+  "spray repo" at "http://repo.spray.io/"
+)
 
 libraryDependencies ++= Seq(
   guice,
@@ -18,8 +20,17 @@ libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "4.0.0-1" exclude("org.webjars", "jquery"),
   "org.webjars" % "jquery" % "3.3.1-1",
   "org.webjars" % "font-awesome" % "4.7.0",
-  "org.webjars" % "bootstrap-datepicker" % "1.4.0" exclude("org.webjars", "bootstrap")
+  "org.webjars" % "bootstrap-datepicker" % "1.4.0" exclude("org.webjars", "bootstrap"),
+  "javax.xml.bind" % "jaxb-api" % "2.1",
+  "org.scalactic" %% "scalactic" % "3.0.5",
+  "org.scalatest" %% "scalatest" % "3.0.5" ,
+  "org.seleniumhq.selenium" % "selenium-java" % "2.41.0"
 )
 
 
 scalariformSettings
+
+fork := true
+
+javaOptions += "-Dwebdriver.chrome.driver=drivers/chromedriver.exe"
+
