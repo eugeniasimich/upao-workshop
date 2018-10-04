@@ -26,7 +26,7 @@ trait CommonSelenium extends FlatSpec with WebBrowser with Driver with Eventuall
 
   setCaptureDir("/temp/capture")
 
-  val baseUrl: String = "http://localhost:9100/"
+  val baseUrl: String = ""
 
   override def afterAll {
     quit()

@@ -24,7 +24,9 @@ libraryDependencies ++= Seq(
   "javax.xml.bind" % "jaxb-api" % "2.1",
   "org.scalactic" %% "scalactic" % "3.0.5",
   "org.scalatest" %% "scalatest" % "3.0.5" ,
-  "org.seleniumhq.selenium" % "selenium-java" % "2.41.0"
+  "org.seleniumhq.selenium" % "selenium-java" % "3.4.0",
+  "org.seleniumhq.selenium" % "selenium-opera-driver" % "3.4.0",
+  "org.json" % "json" % "20180813"
 )
 
 
@@ -32,5 +34,5 @@ scalariformSettings
 
 fork := true
 
-javaOptions += "-Dwebdriver.chrome.driver=drivers/chromedriver.exe"
+javaOptions += "-Dwebdriver.firefox.driver=drivers/geckodriver"
 

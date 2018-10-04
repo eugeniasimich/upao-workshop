@@ -10,18 +10,17 @@ import org.scalatest.concurrent.IntegrationPatience
 class WhatIsBonzzu extends Eventually with WebBrowser with Firefox with Matchers with IntegrationPatience {
 
   def fn(): Unit = {
-    println("Yay, we are famous 12312")
     try {
       go to "http://www.google.com/"
 
       textField("q").value = "Bonzzu"
-      click on "btnG"
+      click on name("btnK")
 
       eventually {
         find(tagName("body")).get.text should include("bonzzu.com")
       }
 
-      println("Yay, we are famous")
+      println("###################################### Yay, we are famous ##########################################")
     } finally {
       webDriver.quit()
     }
@@ -29,7 +28,7 @@ class WhatIsBonzzu extends Eventually with WebBrowser with Firefox with Matchers
 }
 
 object WhatIsBonzzu extends App {
-  println("Yay, we are famous 1122")
+  System.setProperty("webdriver.gecko.driver",
+    "drivers/geckodriver");
   new WhatIsBonzzu().fn()
-  println("Yay, we are famous 123122")
 }
