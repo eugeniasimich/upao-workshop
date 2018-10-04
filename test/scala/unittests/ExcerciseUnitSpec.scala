@@ -1,3 +1,5 @@
+package unittests
+
 import exercises._
 import org.scalatest.FlatSpec
 
