@@ -18,7 +18,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "4.0.0-1" exclude("org.webjars", "jquery"),
   "org.webjars" % "jquery" % "3.3.1-1",
   "org.webjars" % "font-awesome" % "4.7.0",
-  "org.webjars" % "bootstrap-datepicker" % "1.4.0" exclude("org.webjars", "bootstrap")
+  "org.webjars" % "bootstrap-datepicker" % "1.4.0" exclude("org.webjars", "bootstrap"),
+  "javax.xml.bind" % "jaxb-api" % "2.1"
 )
 
 
